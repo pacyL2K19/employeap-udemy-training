@@ -61,7 +61,7 @@ const CreateEmployee = () => {
             </Button>
             <Modal
                 animationType = 'slide'
-                transparent = {false}
+                transparent = {true}
                 visible = {modal}
                 onRequestClose = {() => {
                     setModal(false)
@@ -88,7 +88,7 @@ const CreateEmployee = () => {
                     </View>
                     <Button
                         theme = {theme}
-                        onPress = {() => setModal(true)}
+                        onPress = {() => setModal(false)}
                     >
                         Cancel
                     </Button>
@@ -105,7 +105,7 @@ const theme = {
     }
 }
 
-const styles = StyleSheetList.create({
+const styles = StyleSheet.create({
     root : {
         flex: 1
     },
