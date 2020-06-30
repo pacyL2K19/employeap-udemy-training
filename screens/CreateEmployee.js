@@ -50,6 +50,15 @@ const CreateEmployee = () => {
             >
                 Upload image
             </Button>
+            <Button
+                icon = 'content-save'
+                mode = 'contained'
+                style = {styles.input}
+                theme = {theme}
+                onPress = {() => console.log('Saved')}
+            >
+                Save
+            </Button>
             <Modal
                 animationType = 'slide'
                 transparent = {false}
