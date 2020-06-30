@@ -1,21 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import home from './screens/Home'
 import Home from './screens/Home';
+import { View, StyleSheet } from 'react-native';
+import CreateEmployee from './screens/CreateEmployee';
+// import Constants from 'expo-constants'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Home />
+
+    <View style = { styles.container }> 
+      {/* <Home /> */}
+      <CreateEmployee />
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  container : {
+    flex : 1,
+    backgroundColor : '#e0e0e0',
+    marginTop : 20
+  }
+})
