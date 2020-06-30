@@ -3,8 +3,9 @@ import {
     StyleSheet,
     View,
     Text,
+    Modal,
 } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import { TextInput, Button} from 'react-native-paper'
 
 const CreateEmployee = () => {
     const [name, setName] = useState('')
@@ -40,14 +41,51 @@ const CreateEmployee = () => {
                 theme = {theme}
                 onChangeText = {(text) => setSalary(text)}
             />
-            {/* <TextInput 
-                label = 'Name'
-                value = {name}
+            <Button
+                icon = 'upload'
+                mode = 'contained'
                 style = {styles.input}
-                mode = 'outlined'
                 theme = {theme}
-                onChangeText = {(text) => setName(text)}
-            /> */}
+                onPress = {() => setModal(true)}
+            >
+                Upload image
+            </Button>
+            <Modal
+                animationType = 'slide'
+                transparent = {false}
+                visible = {modal}
+                onRequestClose = {() => {
+                    setModal(false)
+                }}
+            >
+                <View style = { styles.modalView }>
+                    <View style = { styles.modalButtonView }>
+                        <Button
+                            icon = 'camera'
+                            mode = 'contained'
+                            theme = {theme}
+                            onPress = {() => console.log('Pressed')}
+                        >
+                            Camera
+                        </Button>
+                        <Button
+                            icon = 'image-area'
+                            mode = 'contained'
+                            theme = {theme}
+                            onPress = {() => console.log('Pressed')}
+                        >
+                            Gallery
+                        </Button>
+                    </View>
+                    <Button
+                        theme = {theme}
+                        onPress = {() => setModal(true)}
+                    >
+                        Cancel
+                    </Button>
+                </View>
+                
+            </Modal>
         </View>
     )
 }
@@ -64,6 +102,17 @@ const styles = StyleSheetList.create({
     },
     input : {
         margin : 5
+    },
+    modalButtonView : {
+        flexDirection : 'row',
+        justifyContent : 'space-around',
+        padding: 10,
+    },
+    modalView : {
+        position : 'absolute',
+        bottom : 2,
+        width : '100%',
+        backgroundColor : 'white'
     }
 })
 
