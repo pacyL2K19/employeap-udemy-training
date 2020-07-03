@@ -4,9 +4,11 @@ import {
     View,
     Text,
     Modal,
+    Alert,
 } from 'react-native'
 import { TextInput, Button} from 'react-native-paper'
-
+import * as ImagePicker from 'expo-image-picker'
+import * as Permission from 'expo-permissions'
 const CreateEmployee = () => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
@@ -14,6 +16,36 @@ const CreateEmployee = () => {
     const [salary, setSalary] = useState('')
     const [picture, setPicture] = useState('')
     const [modal, setModal] = useState(false)
+
+    const pickFromGallery = async () => {
+        const {granted} = await Permission.askAsync(Permission.CAMERA_ROLL)
+        if (granted) {
+            let data = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes : ImagePicker.MediaTypeOptions.Images,
+                allowsEditing : true,
+                aspect : [1,1],
+                quality : 0.5
+            })
+            console.log(data)
+        } else {
+            Alert.alert('You need to give up permission')
+        }
+    }
+
+    const pickFromCamera = async () => {
+        const {granted} = await Permission.askAsync(Permission.CAMERA)
+        if (granted) {
+            let data = await ImagePicker.launchCameraAsync({
+                mediaTypes : ImagePicker.MediaTypeOptions.Images,
+                allowsEditing : true,
+                aspect : [1,1],
+                quality : 0.5
+            })
+            console.log(data)
+        } else {
+            Alert.alert('You need to give up permission')
+        }
+    }
 
     return (
         <View style = {styles.root}>
@@ -73,7 +105,7 @@ const CreateEmployee = () => {
                             icon = 'camera'
                             mode = 'contained'
                             theme = {theme}
-                            onPress = {() => console.log('Pressed')}
+                            onPress = {() => pickFromCamera ()}
                         >
                             Camera
                         </Button>
@@ -81,7 +113,7 @@ const CreateEmployee = () => {
                             icon = 'image-area'
                             mode = 'contained'
                             theme = {theme}
-                            onPress = {() => console.log('Pressed')}
+                            onPress = {() => pickFromGallery ()}
                         >
                             Gallery
                         </Button>

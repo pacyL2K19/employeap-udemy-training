@@ -16,9 +16,9 @@ const Profile = (props) => {
     const {id, name, position, picture, phone, email, salary } = props.route.params.item
     const openDial = () => {
         if (Platform.OS === 'android') {
-            Linking.openURL('tel:09393')
+            Linking.openURL('tel:'+phone)
         } else {
-            Linking.openURL('telprompt:02930')
+            Linking.openURL('telprompt:'+phone)
         }
     }
     return (
