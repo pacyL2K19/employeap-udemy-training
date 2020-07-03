@@ -1,22 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View , Image, FlatList} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
+import { NavigationHelpersContext } from '@react-navigation/native'
 
-const Home = () => {
+const Home = ({navigation}) => {
     const data = [
-        {id : 1, name : 'Pacifique', position : 'Team manager'},
-        {id : 2, name : 'Cedigola', position : 'ML expert'},
-        {id : 3, name : 'Adkif', position : 'Backend dev'},
-        {id : 4, name : 'John Z', position : 'Frontend dev'},
-        {id : 5, name : 'Dav M', position : 'Devopps'},
-        {id : 6, name : 'Luc G', position : 'Hiring manager'},
-        {id : 7, name : 'Wellah V', position : 'SEO'},
-        {id : 8, name : 'Chris L', position : 'Teacher'},
-        {id : 9, name : 'Mickren N', position : 'iOT learner'}
+        {id : 1, name : 'Pacifique', email : 'abc@abc.cke', salary : '$100k', phone : '12345',position : 'Team manager', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
+        {id : 2, name : 'Cedigola', email : 'fhkj@abc.cke', salary : '$55k', phone : '8329',position : 'Game dev', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
+        {id : 3, name : 'Adkif K', email : 'iwm@abc.cke', salary : '$55k', phone : '9300',position : 'ML expert ', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
     ]
     const renderList = ((item) => {
         return (
-            <Card style = { styles.myCard }>
+            <Card style = { styles.myCard } onPress = {() => navigation.navigate('Profile', {item})}>
                 <View style = { styles.viewCard}> 
                     <Image 
                         style = {{ height : 60, width : 60, borderRadius : 30}}
@@ -31,7 +26,7 @@ const Home = () => {
         )
     })
     return (
-        <Vew>
+        <Vew style = {{ flex : 1}}>
             <FlatList 
                 data = {data}
                 keyExtractor = {(item) => {item.toString()}}
@@ -39,12 +34,12 @@ const Home = () => {
                     return renderList(item)
                 }}
             />
-            <FAB 
+            <FAB
+                onPress = {() => navigation.navigate('Create') } 
                 style = {styles.fab}
                 small = {false}
                 icon = "plus"
                 theme = {{ colors : {accent : "#006aff"}}}
-                onPress = {() => {console.log('Pressed')}}
             />
         </Vew>
     )
