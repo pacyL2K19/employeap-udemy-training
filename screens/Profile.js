@@ -13,7 +13,7 @@ import { Title, Card, Button } from 'react-native-paper'
 import { MaterialIcons, Entypo } from '@expo/vector-icons'
 
 const Profile = (props) => {
-    const {id, name, position, picture, phone, email} = props.route.params.item
+    const {id, name, position, picture, phone, email, salary } = props.route.params.item
     const openDial = () => {
         if (Platform.OS === 'android') {
             Linking.openURL('tel:09393')
@@ -30,7 +30,7 @@ const Profile = (props) => {
             <View style = {{ alignItems :'center'}}>
                 <Image
                     style = {{width : 100, height : 100, borderRadius : 50, marginTop : -50}}
-                    source = {{uri :'https://unsplash.com/photos/y60Pux2HYk4' }}
+                    source = {{uri : picture }}
                 />
             </View>
             <View style = {{ alignItems : 'center', margin : 15}}>
@@ -59,7 +59,9 @@ const Profile = (props) => {
                     <Text style = { styles.myText }> {phone}</Text>
                 </View>
             </Card>
-            <Card>
+            <Card
+                style = { styles.myCard} 
+            >
                 <View>
                     <MaterialIcons name = 'attach-money' size = {32} color = '#006aff' />
                     <Text style = { styles.myText }> {salary} </Text>
@@ -98,7 +100,9 @@ const styles = StyleSheet.create({
         flex : 1,
     },
     myCard : {
-        margin : 3
+        margin : 5,
+        flexDirection : 'row',
+        padding : 5
     },
     cardContent : {
         flexDirection : 'row',
