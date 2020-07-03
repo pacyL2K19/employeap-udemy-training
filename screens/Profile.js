@@ -12,8 +12,9 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { Title, Card, Button } from 'react-native-paper'
 import { MaterialIcons, Entypo } from '@expo/vector-icons'
 
-const Profile = () => {
-    const onpenDial = () => {
+const Profile = (props) => {
+    const {id, name, position, picture, phone, email} = props.route.params.item
+    const openDial = () => {
         if (Platform.OS === 'android') {
             Linking.openURL('tel:09393')
         } else {
@@ -34,9 +35,9 @@ const Profile = () => {
             </View>
             <View style = {{ alignItems : 'center', margin : 15}}>
                 <Title>
-                    Pacifique LINJANJA
+                    {name}
                 </Title>
-                <Text style = {{ fontSize : 15 }}> CEO </Text>
+                <Text style = {{ fontSize : 15 }}> {position} </Text>
             </View>
             <Card 
                 style = { styles.myCard} 
@@ -46,7 +47,7 @@ const Profile = () => {
             >
                 <View>
                     <MaterialIcons name = 'email' size = {32} color = '#006aff' />
-                    <Text style = { styles.myText }> paci@linja.com </Text>
+                    <Text style = { styles.myText }> {email} </Text>
                 </View>
             </Card>
             <Card
@@ -55,13 +56,13 @@ const Profile = () => {
             >
                 <View>
                     <Entypo name = 'phone' size = {32} color = '#006aff' />
-                    <Text style = { styles.myText }> 090909939</Text>
+                    <Text style = { styles.myText }> {phone}</Text>
                 </View>
             </Card>
             <Card>
                 <View>
                     <MaterialIcons name = 'attach-money' size = {32} color = '#006aff' />
-                    <Text style = { styles.myText }> 100K$ </Text>
+                    <Text style = { styles.myText }> {salary} </Text>
                 </View>
             </Card>
             <View style={{ flexDirection : 'row', justifyContent: 'space-around', padding : 10}}> 
