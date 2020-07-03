@@ -26,7 +26,7 @@ const Home = ({navigation}) => {
         )
     })
     return (
-        <Vew style = {{ flex : 1}}>
+        <View style = {{ flex : 1}}>
             <FlatList 
                 data = {data}
                 keyExtractor = {(item) => {item.toString()}}
@@ -41,7 +41,7 @@ const Home = ({navigation}) => {
                 icon = "plus"
                 theme = {{ colors : {accent : "#006aff"}}}
             />
-        </Vew>
+        </View>
     )
 }
 
@@ -56,7 +56,13 @@ const styles = StyleSheet.create({
     },
     text : {
         fontSize : 18
-    }
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+    },
 })
 
 export default Home
