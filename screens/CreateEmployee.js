@@ -42,8 +42,12 @@ const CreateEmployee = () => {
                 quality : 0.5
             })
             if (!data.cancelled) {
-                let newFile = { uri : data.uri, type : `test/${data.uri.split('.')[1]}`, name :`text.${data.uri.split('.')[1]}`}
-                handleUpload ()
+                let newFile = { 
+                    uri : data.uri, 
+                    type : `test/${data.uri.split('.')[1]}`, 
+                    name :`text.${data.uri.split('.')[1]}`
+                }
+                handleUpload (newFile)
             }
         } else {
             Alert.alert('You need to give up permission')
@@ -61,7 +65,8 @@ const CreateEmployee = () => {
         })
             .then (res => res.json())
             .then (data => {
-                console.log(data)
+                setPicture(data.url)
+                setModal (false)
             })
     }
 
@@ -92,7 +97,7 @@ const CreateEmployee = () => {
                 onChangeText = {(text) => setSalary(text)}
             />
             <Button
-                icon = 'upload'
+                icon = {picture == '' ? 'upload' : 'check'}
                 mode = 'contained'
                 style = {styles.input}
                 theme = {theme}
