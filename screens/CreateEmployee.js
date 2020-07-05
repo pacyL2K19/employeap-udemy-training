@@ -42,7 +42,7 @@ const CreateEmployee = () => {
                 quality : 0.5
             })
             if (!data.cancelled) {
-                let newFile = { uri : data.uri, type : `test/${data.uri.split('.')[1]}`}
+                let newFile = { uri : data.uri, type : `test/${data.uri.split('.')[1]}`, name :`text.${data.uri.split('.')[1]}`}
                 handleUpload ()
             }
         } else {
