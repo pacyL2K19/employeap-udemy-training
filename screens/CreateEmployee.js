@@ -45,7 +45,7 @@ const CreateEmployee = () => {
                 let newFile = { 
                     uri : data.uri, 
                     type : `test/${data.uri.split('.')[1]}`, 
-                    name :`text.${data.uri.split('.')[1]}`
+                    name :`text.${data.uri.split('.')[1]}` // the unique name has to be set automatically by cloudinary 
                 }
                 handleUpload (newFile)
             }
