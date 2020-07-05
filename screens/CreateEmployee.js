@@ -41,10 +41,28 @@ const CreateEmployee = () => {
                 aspect : [1,1],
                 quality : 0.5
             })
-            console.log(data)
+            if (!data.cancelled) {
+                let newFile = { uri : data.uri, type : `test/${data.uri.split('.')[1]}`}
+                handleUpload ()
+            }
         } else {
             Alert.alert('You need to give up permission')
         }
+    }
+
+    const handleUpload = (image) => {
+        const data = new FormData()
+        data.append('file', image)
+        data.append('upload_preset', 'employeeApp')
+        data.append('cloud_name', 'pacyl20')
+        fetch ('https://api.cloudinary.com/v1_1/pacyl20/image/upload', {
+            method : 'post',
+            body : data
+        })
+            .then (res => res.json())
+            .then (data => {
+                console.log(data)
+            })
     }
 
     return (
