@@ -43,7 +43,7 @@ app.post('/delete', (req, res) => {
     Employee.findByIdAndRemove(req.body.id)
         .then(data => {
             console.log(data)
-            res.send('deleted')
+            res.send(data)
         })
 })
 
@@ -58,7 +58,7 @@ Employee.findByIdAndUpdate(req.body.id, {
     })
     .then(data => {
         console.log(data)
-        req.send('Updated')
+        req.send(data)
     })
     .catch(err => {
         console.log(err)
@@ -66,6 +66,13 @@ Employee.findByIdAndUpdate(req.body.id, {
 })
 
 app.get('/', (res, req) => {
+    Employee.find({})
+        .then(data => {
+            res.send(data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     res.setEncoding('welcome')
 })
 
