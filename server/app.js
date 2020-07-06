@@ -19,9 +19,24 @@ mongoose.connection.on('error', (err) => {
     console.log('connection failled with error '+err)
 })
 
-app.post('/send', (req, res) => {
-    console.log(req.body)
-    res.send(('posted'))
+app.post('/send-data', (req, res) => {
+    const employee = new Employee ({
+        name : req.body.name,
+        email : req.body.email,
+        phone : req.body.phone,
+        salary : req.body.salary,
+        position : req.body.position,
+        picture : req.body.picture
+    })
+    employee.save ()
+        .then(data => {
+            console.log(data)
+            res.send('Success')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
 })
 
 app.get('/', (res, req) => {
