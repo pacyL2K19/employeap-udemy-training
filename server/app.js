@@ -39,6 +39,14 @@ app.post('/send-data', (req, res) => {
 
 })
 
+app.post('/delete', (req, res) => {
+    Employee.findByIdAndRemove(req.body.id)
+        .then(data => {
+            console.log(data)
+            res.send('deleted')
+        })
+})
+
 app.get('/', (res, req) => {
     res.setEncoding('welcome')
 })
