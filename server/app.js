@@ -47,6 +47,24 @@ app.post('/delete', (req, res) => {
         })
 })
 
+app.post('/update', (res, req) => {
+Employee.findByIdAndUpdate(req.body.id, {
+    name : req.body.name,
+    email : req.body.email,
+    phone : req.body.phone,
+    salary : req.body.salary,
+    position : req.body.position,
+    picture : req.body.picture
+    })
+    .then(data => {
+        console.log(data)
+        req.send('Updated')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
 app.get('/', (res, req) => {
     res.setEncoding('welcome')
 })
