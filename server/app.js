@@ -1,7 +1,8 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import mongoose from 'mongoose'
-import Employee from './Employee'
+const express = require('express')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const Employee = require('./Employee')
+
 const app = express ()
 app.use(bodyParser.json())
 

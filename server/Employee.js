@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const EmployeeSchema = new mongoose.Schema ({
     name : String,
@@ -9,4 +9,4 @@ const EmployeeSchema = new mongoose.Schema ({
     position : String
 })
 
-export default mongoose.model('Employee', EmployeeSchema)
+module.exports = mongoose.model('Employee', EmployeeSchema)
