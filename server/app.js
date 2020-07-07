@@ -6,7 +6,7 @@ const Employee = require('./Employee')
 const app = express ()
 app.use(bodyParser.json())
 
-const mongoUrl = 'mongo "mongodb+srv://cluster0.eldg9.mongodb.net/<dbname>" --username pacy1'
+const mongoUrl = "mongodb+srv://cluster0.eldg9.mongodb.net/<dbname>"
 mongoose.connect(mongoUrl,  {
     useNewUrlParser : true,
     useUnifiedTopology : true
