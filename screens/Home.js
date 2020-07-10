@@ -14,18 +14,13 @@ const Home = ({navigation}) => {
                 setData('false')
             })
     }, [])
-    const data = [
-        {_id : 1, name : 'Pacifique', email : 'abc@abc.cke', salary : '$100k', phone : '12345',position : 'Team manager', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
-        {_id : 2, name : 'Cedigola', email : 'fhkj@abc.cke', salary : '$55k', phone : '8329',position : 'Game dev', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
-        {_id : 3, name : 'Adkif K', email : 'iwm@abc.cke', salary : '$55k', phone : '9300',position : 'ML expert ', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
-    ]
     const renderList = ((item) => {
         return (
             <Card style = { styles.myCard } onPress = {() => navigation.navigate('Profile', {item})}>
                 <View style = { styles.viewCard}> 
                     <Image 
                         style = {{ height : 60, width : 60, borderRadius : 30}}
-                        source = {{ uri : "https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80"}}
+                        source = {{ uri : item.picture}}
                     />
                     <View style = {{ marginLeft : 10}}>
                         <Text style = { styles.text }>{ item.name }</Text>
@@ -42,10 +37,10 @@ const Home = ({navigation}) => {
                 <ActivityIndicator size = 'large' color = '#0000ff'></ActivityIndicator>
                 :
                 <FlatList 
-                data = {data}
-                keyExtractor = {(item) => {item._id.toString()}}
-                renderItem = {({item}) => {
-                    return renderList(item)
+                    data = {data}
+                    keyExtractor = {(item) => {item._id.toString()}}
+                    renderItem = {({item}) => {
+                        return renderList(item)
                 }}
             />
             }
