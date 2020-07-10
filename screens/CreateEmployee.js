@@ -17,6 +17,20 @@ const CreateEmployee = () => {
     const [picture, setPicture] = useState('')
     const [modal, setModal] = useState(false)
 
+    const submitData = () => {
+        fetch ('http://localhost:3000/send-data', {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'app/json'
+            },
+            body : JSON.stringify({
+                ame ,
+                email,
+
+            })
+        })
+    }
+
     const pickFromGallery = async () => {
         const {granted} = await Permission.askAsync(Permission.CAMERA_ROLL)
         if (granted) {
@@ -72,6 +86,14 @@ const CreateEmployee = () => {
 
     return (
         <View style = {styles.root}>
+            <TextInput 
+                label = 'Name'
+                value = {name}
+                style = {styles.input}
+                mode = 'outlined'
+                theme = {theme}
+                onChangeText = {(text) => setName(text)}
+            />
             <TextInput 
                 label = 'Email'
                 value = {email}
