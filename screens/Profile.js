@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {
     Text,
     View,
@@ -13,17 +13,6 @@ import { Title, Card, Button } from 'react-native-paper'
 import { MaterialIcons, Entypo } from '@expo/vector-icons'
 
 const Profile = (props) => {
-    const [data, setData] = useState([])
-    const [load, setLoad] = useState (true)
-    useEffect (() => {
-        fetch('http://localhost:3000/')
-            .then(res => res.json())
-            .then(results => {
-                setData(results)
-                setData('false')
-            })
-    }, [])
-
     const {_id, name, position, picture, phone, email, salary } = props.route.params.item
     const openDial = () => {
         if (Platform.OS === 'android') {

@@ -1,9 +1,19 @@
-import React from 'react'
-import { StyleSheet, Text, View , Image, FlatList} from 'react-native'
+import React, {useEffect, useState} from 'react'
+import { StyleSheet, Text, View , Image, FlatList, ActivityIndicator} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
 import { NavigationHelpersContext } from '@react-navigation/native'
 
 const Home = ({navigation}) => {
+    const [data, setData] = useState([])
+    const [loading, setLoad] = useState (true)
+    useEffect (() => {
+        fetch('http://localhost:3000/')
+            .then(res => res.json())
+            .then(results => {
+                setData(results)
+                setData('false')
+            })
+    }, [])
     const data = [
         {_id : 1, name : 'Pacifique', email : 'abc@abc.cke', salary : '$100k', phone : '12345',position : 'Team manager', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
         {_id : 2, name : 'Cedigola', email : 'fhkj@abc.cke', salary : '$55k', phone : '8329',position : 'Game dev', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
@@ -27,13 +37,18 @@ const Home = ({navigation}) => {
     })
     return (
         <View style = {{ flex : 1}}>
-            <FlatList 
+            {
+                loading ? 
+                <ActivityIndicator size = 'large' color = '#0000ff'></ActivityIndicator>
+                :
+                <FlatList 
                 data = {data}
                 keyExtractor = {(item) => {item._id.toString()}}
                 renderItem = {({item}) => {
                     return renderList(item)
                 }}
             />
+            }
             <FAB
                 onPress = {() => navigation.navigate('Create') } 
                 style = {styles.fab}
