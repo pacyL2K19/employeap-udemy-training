@@ -5,6 +5,7 @@ import {
     Text,
     Modal,
     Alert,
+    KeyboardAvoidingView,
 } from 'react-native'
 import { TextInput, Button} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker'
@@ -95,6 +96,7 @@ const CreateEmployee = () => {
 
     return (
         <View style = {styles.root}>
+            <KeyboardAvoidingView>
             <TextInput 
                 label = 'Name'
                 value = {name}
@@ -187,8 +189,8 @@ const CreateEmployee = () => {
                         Cancel
                     </Button>
                 </View>
-                
             </Modal>
+            </KeyboardAvoidingView>
         </View>
     )
 }
