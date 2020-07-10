@@ -27,9 +27,16 @@ const CreateEmployee = () => {
             body : JSON.stringify({
                 ame ,
                 email,
-
+                phone,
+                salary,
+                position,
+                picture
             })
         })
+            .then((res) => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
     const pickFromGallery = async () => {
