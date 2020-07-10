@@ -14,6 +14,7 @@ const CreateEmployee = () => {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [salary, setSalary] = useState('')
+    const [position, setPosition] = useState('')
     const [picture, setPicture] = useState('')
     const [modal, setModal] = useState(false)
 
@@ -117,6 +118,14 @@ const CreateEmployee = () => {
                 mode = 'outlined'
                 theme = {theme}
                 onChangeText = {(text) => setSalary(text)}
+            />
+            <TextInput 
+                label = 'Position'
+                value = {position}
+                style = {styles.input}
+                mode = 'outlined'
+                theme = {theme}
+                onChangeText = {(text) => setPosition(text)}
             />
             <Button
                 icon = {picture == '' ? 'upload' : 'check'}
