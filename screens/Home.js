@@ -5,9 +5,9 @@ import { NavigationHelpersContext } from '@react-navigation/native'
 
 const Home = ({navigation}) => {
     const data = [
-        {id : 1, name : 'Pacifique', email : 'abc@abc.cke', salary : '$100k', phone : '12345',position : 'Team manager', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
-        {id : 2, name : 'Cedigola', email : 'fhkj@abc.cke', salary : '$55k', phone : '8329',position : 'Game dev', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
-        {id : 3, name : 'Adkif K', email : 'iwm@abc.cke', salary : '$55k', phone : '9300',position : 'ML expert ', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
+        {_id : 1, name : 'Pacifique', email : 'abc@abc.cke', salary : '$100k', phone : '12345',position : 'Team manager', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
+        {_id : 2, name : 'Cedigola', email : 'fhkj@abc.cke', salary : '$55k', phone : '8329',position : 'Game dev', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
+        {_id : 3, name : 'Adkif K', email : 'iwm@abc.cke', salary : '$55k', phone : '9300',position : 'ML expert ', picture : 'https://images.unsplash.com/photo-1587890271791-6fc0d1fe7537?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80'},
     ]
     const renderList = ((item) => {
         return (
@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
         <View style = {{ flex : 1}}>
             <FlatList 
                 data = {data}
-                keyExtractor = {(item) => {item.toString()}}
+                keyExtractor = {(item) => {item._id.toString()}}
                 renderItem = {({item}) => {
                     return renderList(item)
                 }}
