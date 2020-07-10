@@ -18,7 +18,7 @@ const CreateEmployee = () => {
     const [picture, setPicture] = useState('')
     const [modal, setModal] = useState(false)
 
-    const submitData = () => {
+    const submitData = ({navigation}) => {
         fetch ('http://localhost:3000/send-data', {
             method : 'POST',
             headers : {
@@ -35,7 +35,8 @@ const CreateEmployee = () => {
         })
             .then((res) => res.json())
             .then(data => {
-                console.log(data)
+                Alert.alert(`${data.name} is saved successfully`)
+                navigation.navigate('Home')
             })
     }
 
