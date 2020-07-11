@@ -5,7 +5,11 @@ import Home from './screens/Home';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Profile from './screens/Profile';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import { reducer } from './reducers/reducer'
 
+const store = createStore ()
 const Stack = createStackNavigator ()
 const myOptions = {
   title: 'Home',
