@@ -28,6 +28,7 @@ const Profile = (props) => {
             .then(res => res.json())
             .then(deletedeEmployee => {
                 Alert.alert(`${deleteEmployee.name} deleted successfully`)
+                props.navigation.navigate('Home')
             })
             .catch(err => {
                 Alert.alert('Failed to remove employee, try again later')
