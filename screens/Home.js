@@ -1,18 +1,24 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Text, View , Image, FlatList, ActivityIndicator} from 'react-native'
+import { StyleSheet, Text, View , Image, FlatList, ActivityIndicator, Alert} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
 import { NavigationHelpersContext } from '@react-navigation/native'
 
 const Home = ({navigation}) => {
     const [data, setData] = useState([])
     const [loading, setLoad] = useState (true)
-    useEffect (() => {
+    const fetchData = () => {
         fetch('http://localhost:3000/')
             .then(res => res.json())
             .then(results => {
                 setData(results)
-                setData('false')
+                setLoad('false')
             })
+            .catch(err => {
+                Alert.alert('Something went wrong')
+            })
+    }
+    useEffect (() => {
+        fetchData ()
     }, [])
     const renderList = ((item) => {
         return (
@@ -32,18 +38,16 @@ const Home = ({navigation}) => {
     })
     return (
         <View style = {{ flex : 1}}>
-            {
-                loading ? 
-                <ActivityIndicator size = 'large' color = '#0000ff'></ActivityIndicator>
-                :
-                <FlatList 
-                    data = {data}
-                    keyExtractor = {(item) => {item._id.toString()}}
-                    renderItem = {({item}) => {
-                        return renderList(item)
+            
+            <FlatList 
+                data = {data}
+                keyExtractor = {(item) => {item._id.toString()}}
+                renderItem = {({item}) => {
+                    return renderList(item)
                 }}
+                onRefresh = {}
+                refreshing = {loading}
             />
-            }
             <FAB
                 onPress = {() => navigation.navigate('Create') } 
                 style = {styles.fab}

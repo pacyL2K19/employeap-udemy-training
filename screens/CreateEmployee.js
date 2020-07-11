@@ -39,6 +39,9 @@ const CreateEmployee = () => {
                 Alert.alert(`${data.name} is saved successfully`)
                 navigation.navigate('Home')
             })
+            .catch(err => {
+                Alert.alert('Error while uploading files')
+            })
     }
 
     const pickFromGallery = async () => {
