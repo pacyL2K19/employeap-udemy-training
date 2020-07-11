@@ -38,7 +38,7 @@ const Profile = (props) => {
         if (Platform.OS === 'android') {
             Linking.openURL('tel:'+phone)
         } else {
-            Linking.openURL('telprompt:'+phone)
+            Linking.openURL('telprompt:'+phone) 
         }
     }
     return (
@@ -92,7 +92,12 @@ const Profile = (props) => {
                     icon = 'account-edit'
                     mode = 'contained' 
                     theme = {theme}
-                    onPress = {() => console.log('Pressed')}
+                    onPress = {() => {
+                        props.navigation.navigate('Create'),
+                        {
+                            _id, name, position, picture, phone, email, salary
+                        }
+                    }}
                 >
                     Edit
                 </Button>
