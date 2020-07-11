@@ -9,7 +9,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { reducer } from './reducers/reducer'
 
-const store = createStore () // use createContext hooks instead of createStore if you need to use context API
+const store = createStore (reducer) // use createContext hooks instead of createStore if you need to use context API
 /**
  * for example 
  * const MyContext = createContext () 
