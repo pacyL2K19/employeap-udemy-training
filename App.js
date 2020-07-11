@@ -9,7 +9,12 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { reducer } from './reducers/reducer'
 
-const store = createStore ()
+const store = createStore () // use createContext hooks instead of createStore if you need to use context API
+/**
+ * for example 
+ * const MyContext = createContext () 
+ * Then use useReducer hook to wrapp the context with all screens which willl be using the context
+ */
 const Stack = createStackNavigator ()
 const myOptions = {
   title: 'Home',
