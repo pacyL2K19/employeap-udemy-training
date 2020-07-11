@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { StyleSheet, Text, View , Image, FlatList, Alert} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Home = ({navigation}) => {
-    const [data, setData] = useState([])
-    const [loading, setLoad] = useState (true)
+    // const [data, setData] = useState([])
+    // const [loading, setLoad] = useState (true)
+    const { data, loading } = useSelector ((state) => {
+        return state
+    })
     const fetchData = () => {
         fetch('http://localhost:3000/')
             .then(res => res.json())
