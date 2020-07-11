@@ -42,7 +42,7 @@ const Profile = (props) => {
             <Card 
                 style = { styles.myCard} 
                 onPress = {() => {
-                    Linking.openURL('mailto:pac@suj.xs')
+                    Linking.openURL(`mailto:${email}`)
                 }}
             >
                 <View>
