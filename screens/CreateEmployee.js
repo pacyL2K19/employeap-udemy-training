@@ -30,6 +30,31 @@ const CreateEmployee = ({navigation, route}) => {
             return ''
         }
     }
+    const updateDetails = () => {
+        fetch ('http://localhost:3000/update', {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'app/json'
+            },
+            body : JSON.stringify({
+                _id : route.params._id,
+                name ,
+                email,
+                phone,
+                salary,
+                position,
+                picture
+            })
+        })
+            .then((res) => res.json())
+            .then(data => {
+                Alert.alert(`${data.name} is uodated successfully`)
+                navigation.navigate('Home')
+            })
+            .catch(err => {
+                Alert.alert('Error while uploading files')
+            })
+    }
     const [name, setName] = useState(getDetails('name'))
     const [phone, setPhone] = useState(getDetails('phone'))
     const [email, setEmail] = useState(getDetails('email'))
@@ -45,7 +70,7 @@ const CreateEmployee = ({navigation, route}) => {
                 'Content-Type' : 'app/json'
             },
             body : JSON.stringify({
-                ame ,
+                name ,
                 email,
                 phone,
                 salary,
@@ -168,15 +193,29 @@ const CreateEmployee = ({navigation, route}) => {
             >
                 Upload image
             </Button>
-            <Button
-                icon = 'content-save'
-                mode = 'contained'
-                style = {styles.input}
-                theme = {theme}
-                onPress = {() => submitData()}
-            >
-                Save
-            </Button>
+            {
+                route.params ? 
+                <Button
+                    icon = 'content-save'
+                    mode = 'contained'
+                    style = {styles.input}
+                    theme = {theme}
+                    onPress = {() => updateDetails()}
+                >
+                    Update details
+                </Button>
+                :
+                <Button
+                    icon = 'content-save'
+                    mode = 'contained'
+                    style = {styles.input}
+                    theme = {theme}
+                    onPress = {() => submitData()}
+                >
+                    Save
+                </Button>
+            }
+            
             <Modal
                 animationType = 'slide'
                 transparent = {true}
