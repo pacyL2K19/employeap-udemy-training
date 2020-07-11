@@ -96,7 +96,7 @@ const CreateEmployee = () => {
 
     return (
         <View style = {styles.root}>
-            <KeyboardAvoidingView>
+            
             <TextInput 
                 label = 'Name'
                 value = {name}
@@ -190,7 +190,7 @@ const CreateEmployee = () => {
                     </Button>
                 </View>
             </Modal>
-            </KeyboardAvoidingView>
+            
         </View>
     )
 }
