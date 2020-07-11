@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Text, View , Image, FlatList, ActivityIndicator, Alert} from 'react-native'
+import { StyleSheet, Text, View , Image, FlatList, Alert} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
-import { NavigationHelpersContext } from '@react-navigation/native'
 
 const Home = ({navigation}) => {
     const [data, setData] = useState([])

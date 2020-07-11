@@ -5,7 +5,6 @@ import {
     Text,
     Modal,
     Alert,
-    KeyboardAvoidingView,
 } from 'react-native'
 import { TextInput, Button} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker'
