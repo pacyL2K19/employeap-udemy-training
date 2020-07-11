@@ -51,9 +51,11 @@ function App() {
 
 export default () => {
   return (
-    <NavigationContainer>
-      <App />
-    </NavigationContainer>
+    <Provider store = { store }>
+      <NavigationContainer>
+        <App />
+      </NavigationContainer>
+    </Provider>
   )
 }
 
