@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Image,
     Linking,
-    Platform
+    Platform,
+    Alert
 } from 'react-native'
 
 import { LinearGradient } from 'expo-linear-gradient'
@@ -14,6 +15,24 @@ import { MaterialIcons, Entypo } from '@expo/vector-icons'
 
 const Profile = (props) => {
     const {_id, name, position, picture, phone, email, salary } = props.route.params.item
+    const deleteEmployee = () => {
+        fetch('http://localhost:3000/delete', {
+            method : 'post',
+            headers : {
+                'Content-Type' : 'app/json'
+            },
+            body : JSON.stringify({
+                id : _id
+            })
+        })
+            .then(res => res.json())
+            .then(deletedeEmployee => {
+                Alert.alert(`${deleteEmployee.name} deleted successfully`)
+            })
+            .catch(err => {
+                Alert.alert('Failed to remove employee, try again later')
+            })
+    }
     const openDial = () => {
         if (Platform.OS === 'android') {
             Linking.openURL('tel:'+phone)
