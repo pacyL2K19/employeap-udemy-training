@@ -9,16 +9,36 @@ import {
 import { TextInput, Button} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker'
 import * as Permission from 'expo-permissions'
-const CreateEmployee = () => {
-    const [name, setName] = useState('')
-    const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
-    const [salary, setSalary] = useState('')
-    const [position, setPosition] = useState('')
-    const [picture, setPicture] = useState('')
+const CreateEmployee = ({navigation, route}) => {
+    const getDetails = (type) => {
+        if (route.params) {
+            switch (type) {
+                case 'name' :
+                    return route.params.name
+                case 'phone' :
+                    return route.params.phone
+                case 'email' :
+                    return route.params.email
+                case 'salary' :
+                    return route.params.salary
+                case 'picture' :
+                    return route.params.picture
+                case 'position' :
+                    return route.params.position
+            }
+        } else {
+            return ''
+        }
+    }
+    const [name, setName] = useState(getDetails('name'))
+    const [phone, setPhone] = useState(getDetails('phone'))
+    const [email, setEmail] = useState(getDetails('email'))
+    const [salary, setSalary] = useState(getDetails('salary'))
+    const [position, setPosition] = useState(getDetails('position'))
+    const [picture, setPicture] = useState(getDetails('picture'))
     const [modal, setModal] = useState(false)
 
-    const submitData = ({navigation}) => {
+    const submitData = () => {
         fetch ('http://localhost:3000/send-data', {
             method : 'POST',
             headers : {
@@ -153,7 +173,7 @@ const CreateEmployee = () => {
                 mode = 'contained'
                 style = {styles.input}
                 theme = {theme}
-                onPress = {() => console.log('Saved')}
+                onPress = {() => submitData()}
             >
                 Save
             </Button>
