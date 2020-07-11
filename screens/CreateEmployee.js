@@ -5,6 +5,7 @@ import {
     Text,
     Modal,
     Alert,
+    KeyboardAvoidingView,
 } from 'react-native'
 import { TextInput, Button} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker'
@@ -62,6 +63,7 @@ const CreateEmployee = ({navigation, route}) => {
     const [position, setPosition] = useState(getDetails('position'))
     const [picture, setPicture] = useState(getDetails('picture'))
     const [modal, setModal] = useState(false)
+    const [enableShift, setEnableShift] = useState(false)
 
     const submitData = () => {
         fetch ('http://localhost:3000/send-data', {
@@ -142,12 +144,14 @@ const CreateEmployee = ({navigation, route}) => {
     }
 
     return (
-        <View style = {styles.root}>
+        <KeyboardAvoidingView behavior = 'position' style = {styles.root} enabled = {enableShift}>
+        <View>
             
             <TextInput 
                 label = 'Name'
                 value = {name}
                 style = {styles.input}
+                onFocus ={() => setEnableShift(false)}
                 mode = 'outlined'
                 theme = {theme}
                 onChangeText = {(text) => setName(text)}
@@ -156,6 +160,7 @@ const CreateEmployee = ({navigation, route}) => {
                 label = 'Email'
                 value = {email}
                 style = {styles.input}
+                onFocus = {() => setEnableShift(false)}
                 mode = 'outlined'
                 theme = {theme}
                 onChangeText = {(text) => setEmail(text)}
@@ -165,6 +170,7 @@ const CreateEmployee = ({navigation, route}) => {
                 value = {phone}
                 style = {styles.input}
                 mode = 'outlined'
+                onFocus = {() => setEnableShift(false)}
                 theme = {theme}
                 onChangeText = {(text) => setPhone(text)}
             />
@@ -173,6 +179,7 @@ const CreateEmployee = ({navigation, route}) => {
                 value = {salary}
                 style = {styles.input}
                 mode = 'outlined'
+                onFocus = {() => setEnableShift(true)}
                 theme = {theme}
                 onChangeText = {(text) => setSalary(text)}
             />
@@ -182,6 +189,7 @@ const CreateEmployee = ({navigation, route}) => {
                 style = {styles.input}
                 mode = 'outlined'
                 theme = {theme}
+                onFocus = {() => setEnableShift(true)}
                 onChangeText = {(text) => setPosition(text)}
             />
             <Button
@@ -253,6 +261,7 @@ const CreateEmployee = ({navigation, route}) => {
             </Modal>
             
         </View>
+        </KeyboardAvoidingView>
     )
 }
 
