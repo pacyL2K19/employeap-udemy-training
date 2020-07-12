@@ -1,16 +1,29 @@
 import React, {useEffect, useState} from 'react'
 import { StyleSheet, Text, View , Image, FlatList, Alert} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Home = ({navigation}) => {
-    const [data, setData] = useState([])
-    const [loading, setLoad] = useState (true)
+    // const [data, setData] = useState([])
+    // const [loading, setLoad] = useState (true)
+    const dispatch = useDispatch ()
+    const { data, loading } = useSelector ((state) => {
+        return state
+    })
     const fetchData = () => {
         fetch('http://localhost:3000/')
             .then(res => res.json())
             .then(results => {
-                setData(results)
-                setLoad('false')
+                // setData(results)
+                // setLoad('false')
+                dispatch({
+                    type : 'ADD_DATA',
+                    payload : results
+                })
+                dispatch ({
+                    type : 'SET_LOADING',
+                    payload : false
+                })
             })
             .catch(err => {
                 Alert.alert('Something went wrong')
