@@ -49,7 +49,7 @@ const CreateEmployee = ({navigation, route}) => {
         })
             .then((res) => res.json())
             .then(data => {
-                Alert.alert(`${data.name} is uodated successfully`)
+                Alert.alert(`${data.name} is updated successfully`)
                 navigation.navigate('Home')
             })
             .catch(err => {
