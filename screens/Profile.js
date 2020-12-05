@@ -26,7 +26,7 @@ const Profile = (props) => {
             })
         })
             .then(res => res.json())
-            .then(deletedeEmployee => {
+            .then(() => {
                 Alert.alert(`${deleteEmployee.name} deleted successfully`)
                 props.navigation.navigate('Home')
             })
