@@ -57,7 +57,7 @@ const Home = ({navigation}) => {
                 renderItem = {({item}) => {
                     return renderList(item)
                 }}
-                onRefresh = {}
+                // onRefresh = {}
                 refreshing = {loading}
             />
             <FAB
