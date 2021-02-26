@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     Text,
     View,
@@ -7,11 +7,11 @@ import {
     Linking,
     Platform,
     Alert
-} from 'react-native'
+} from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient'
-import { Title, Card, Button } from 'react-native-paper'
-import { MaterialIcons, Entypo } from '@expo/vector-icons'
+import { LinearGradient } from 'expo-linear-gradient';
+import { Title, Card, Button } from 'react-native-paper';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 
 const Profile = (props) => {
     const {_id, name, position, picture, phone, email, salary } = props.route.params.item
@@ -45,19 +45,19 @@ const Profile = (props) => {
         <View style = {styles.root}>
             <LinearGradient 
                 colors = {['#0033ff', '#6bc1ff']}
-                style = {{ height : '20%'}}
+                style = {{ height: '20%'}}
             />
-            <View style = {{ alignItems :'center'}}>
+            <View style = {{ alignItems: 'center'}}>
                 <Image
-                    style = {{width : 100, height : 100, borderRadius : 50, marginTop : -50}}
-                    source = {{uri : picture }}
+                    style = {{width: 100, height: 100, borderRadius: 50, marginTop: -50}}
+                    source = {{uri: picture }}
                 />
             </View>
-            <View style = {{ alignItems : 'center', margin : 15}}>
+            <View style = {{ alignItems: 'center', margin: 15}}>
                 <Title>
                     {name}
                 </Title>
-                <Text style = {{ fontSize : 15 }}> {position} </Text>
+                <Text style = {{ fontSize: 15 }}> {position} </Text>
             </View>
             <Card 
                 style = { styles.myCard} 
@@ -87,7 +87,7 @@ const Profile = (props) => {
                     <Text style = { styles.myText }> {salary} </Text>
                 </View>
             </Card>
-            <View style={{ flexDirection : 'row', justifyContent: 'space-around', padding : 10}}> 
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10}}> 
                 <Button 
                     icon = 'account-edit'
                     mode = 'contained' 
@@ -115,26 +115,26 @@ const Profile = (props) => {
 }
 
 const theme = {
-    colors : {
-        primary : '#006aff'
+    colors: {
+        primary: '#006aff'
     }
 }
 
 const styles = StyleSheet.create({
-    root : {
-        flex : 1,
+    root: {
+        flex: 1,
     },
-    myCard : {
-        margin : 5,
-        flexDirection : 'row',
-        padding : 5
+    myCard: {
+        margin: 5,
+        flexDirection: 'row',
+        padding: 5
     },
-    cardContent : {
-        flexDirection : 'row',
-        padding : 8
+    cardContent: {
+        flexDirection: 'row',
+        padding: 8
     },
-    myText : {
-        fontSize : 18
+    myText: {
+        fontSize: 18
     }
 })
 
