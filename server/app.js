@@ -1,24 +1,24 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const Employee = require('./Employee')
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const Employee = require('./Employee');
 
-const app = express ()
-app.use(bodyParser.json())
+const app = express ();
+app.use(bodyParser.json());
 
 const mongoUrl = "mongodb+srv://cluster0.eldg9.mongodb.net/<dbname>"
 mongoose.connect(mongoUrl,  {
     useNewUrlParser : true,
     useUnifiedTopology : true
-})
+});
 
 mongoose.connection.on('connected', () => {
     console.log('connected successfully')
-})
+});
 
 mongoose.connection.on('error', (err) => {
     console.log('connection failled with error '+err)
-})
+});
 
 app.post('/send-data', (req, res) => {
     const employee = new Employee ({
