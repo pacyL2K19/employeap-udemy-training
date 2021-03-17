@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const EmployeeSchema = new mongoose.Schema ({
     name : String,
@@ -7,6 +7,6 @@ const EmployeeSchema = new mongoose.Schema ({
     picture : String,
     salary : String,
     position : String
-})
+});
 
-module.exports = mongoose.model('Employee', EmployeeSchema)
+module.exports = mongoose.model('Employee', EmployeeSchema);
