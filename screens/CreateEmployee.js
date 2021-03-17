@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -6,10 +6,10 @@ import {
     Modal,
     Alert,
     KeyboardAvoidingView,
-} from 'react-native'
-import { TextInput, Button} from 'react-native-paper'
-import * as ImagePicker from 'expo-image-picker'
-import * as Permission from 'expo-permissions'
+} from 'react-native';
+import { TextInput, Button} from 'react-native-paper';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permission from 'expo-permissions';
 const CreateEmployee = ({navigation, route}) => {
     const getDetails = (type) => {
         if (route.params) {
@@ -56,14 +56,14 @@ const CreateEmployee = ({navigation, route}) => {
                 Alert.alert('Error while uploading files')
             })
     }
-    const [name, setName] = useState(getDetails('name'))
-    const [phone, setPhone] = useState(getDetails('phone'))
-    const [email, setEmail] = useState(getDetails('email'))
-    const [salary, setSalary] = useState(getDetails('salary'))
-    const [position, setPosition] = useState(getDetails('position'))
-    const [picture, setPicture] = useState(getDetails('picture'))
-    const [modal, setModal] = useState(false)
-    const [enableShift, setEnableShift] = useState(false)
+    const [name, setName] = useState(getDetails('name'));
+    const [phone, setPhone] = useState(getDetails('phone'));
+    const [email, setEmail] = useState(getDetails('email'));
+    const [salary, setSalary] = useState(getDetails('salary'));
+    const [position, setPosition] = useState(getDetails('position'));
+    const [picture, setPicture] = useState(getDetails('picture'));
+    const [modal, setModal] = useState(false);
+    const [enableShift, setEnableShift] = useState(false);
 
     const submitData = () => {
         fetch ('http://localhost:3000/send-data', {
@@ -120,7 +120,7 @@ const CreateEmployee = ({navigation, route}) => {
                     type : `test/${data.uri.split('.')[1]}`, 
                     name :`text.${data.uri.split('.')[1]}` // the unique name has to be set automatically by cloudinary 
                 }
-                handleUpload (newFile)
+                handleUpload (newFile);
             }
         } else {
             Alert.alert('You need to give up permission')
@@ -272,22 +272,22 @@ const theme = {
 }
 
 const styles = StyleSheet.create({
-    root : {
+    root: {
         flex: 1
     },
-    input : {
-        margin : 5
+    input: {
+        margin: 5
     },
-    modalButtonView : {
-        flexDirection : 'row',
-        justifyContent : 'space-around',
+    modalButtonView: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         padding: 10,
     },
-    modalView : {
-        position : 'absolute',
-        bottom : 2,
-        width : '100%',
-        backgroundColor : 'white'
+    modalView: {
+        position: 'absolute',
+        bottom: 2,
+        width: '100%',
+        backgroundColor: 'white'
     }
 })
 
