@@ -58,25 +58,25 @@ Employee.findByIdAndUpdate(req.body.id, {
     picture : req.body.picture
     })
     .then(data => {
-        console.log(data)
-        req.send(data)
+        console.log(data);
+        req.send(data);
     })
     .catch(err => {
-        console.log(err)
+        console.log(err);
     })
 })
 
 app.get('/', (res, req) => {
     Employee.find({})
         .then(data => {
-            res.send(data)
+            res.send(data);
         })
         .catch(err => {
-            console.log(err)
+            console.log(err);
         })
-    res.setEncoding('welcome')
-})
+    res.setEncoding('welcome');
+});
 
 app.listen(3000, () => {
-    console.log('Server is running')
-})
+    console.log('Server is running');
+});
