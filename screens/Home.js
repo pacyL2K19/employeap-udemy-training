@@ -13,12 +13,12 @@ const Home = ({ navigation }) => {
             .then(res => res.json())
             .then(results => {
                 dispatch({
-                    type : 'ADD_DATA',
-                    payload : results
+                    type: 'ADD_DATA',
+                    payload: results
                 })
                 dispatch ({
-                    type : 'SET_LOADING',
-                    payload : false
+                    type: 'SET_LOADING',
+                    payload: false
                 })
             })
             .catch(err => {
@@ -45,7 +45,7 @@ const Home = ({ navigation }) => {
         )
     })
     return (
-        <View style = {{ flex : 1}}>
+        <View style = {{ flex: 1}}>
             
             <FlatList 
                 data = {data}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         margin: 10
     },
     viewCard : {
-        flexDirection : 'row',
+        flexDirection: 'row',
         padding: 6,
     },
     text : {
