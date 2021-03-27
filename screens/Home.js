@@ -3,9 +3,7 @@ import { StyleSheet, Text, View , Image, FlatList, Alert} from 'react-native'
 import { Card, FAB } from 'react-native-paper'
 import { useSelector, useDispatch } from 'react-redux'
 
-const Home = ({navigation}) => {
-    // const [data, setData] = useState([])
-    // const [loading, setLoad] = useState (true)
+const Home = ({ navigation }) => {
     const dispatch = useDispatch ()
     const { data, loading } = useSelector ((state) => {
         return state
@@ -14,8 +12,6 @@ const Home = ({navigation}) => {
         fetch('http://localhost:3000/')
             .then(res => res.json())
             .then(results => {
-                // setData(results)
-                // setLoad('false')
                 dispatch({
                     type : 'ADD_DATA',
                     payload : results
@@ -57,7 +53,6 @@ const Home = ({navigation}) => {
                 renderItem = {({item}) => {
                     return renderList(item)
                 }}
-                // onRefresh = {}
                 refreshing = {loading}
             />
             <FAB
@@ -72,16 +67,16 @@ const Home = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-    myCard : {
+    myCard: {
         marginTop : 50,
-        margin : 10
+        margin: 10
     },
     viewCard : {
         flexDirection : 'row',
         padding: 6,
     },
     text : {
-        fontSize : 18
+        fontSize: 18
     },
     fab: {
         position: 'absolute',
