@@ -7,7 +7,7 @@ import {
     Alert,
     KeyboardAvoidingView,
 } from 'react-native';
-import { TextInput, Button} from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permission from 'expo-permissions';
 const CreateEmployee = ({navigation, route}) => {
@@ -67,11 +67,11 @@ const CreateEmployee = ({navigation, route}) => {
 
     const submitData = () => {
         fetch ('http://localhost:3000/send-data', {
-            method : 'POST',
-            headers : {
-                'Content-Type' : 'app/json'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'app/json'
             },
-            body : JSON.stringify({
+            body: JSON.stringify({
                 name ,
                 email,
                 phone,
@@ -109,10 +109,10 @@ const CreateEmployee = ({navigation, route}) => {
         const {granted} = await Permission.askAsync(Permission.CAMERA)
         if (granted) {
             let data = await ImagePicker.launchCameraAsync({
-                mediaTypes : ImagePicker.MediaTypeOptions.Images,
-                allowsEditing : true,
-                aspect : [1,1],
-                quality : 0.5
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                aspect: [1,1],
+                quality: 0.5
             })
             if (!data.cancelled) {
                 let newFile = { 
@@ -266,8 +266,8 @@ const CreateEmployee = ({navigation, route}) => {
 }
 
 const theme = {
-    colors : {
-        primary : '#006aff'
+    colors: {
+        primary: '#006aff'
     }
 }
 
